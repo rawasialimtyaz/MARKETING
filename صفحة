@@ -6,9 +6,9 @@
     <title>شركة رواسي الامتياز للإستقدام | تواصل معنا</title>
     <style>
         :root {
-            --brand-green: #0a7c3e;
-            --brand-blue: #1c8ac9;
-            --bg-light: #f4f9f9;
+            --brand-green: #0a7c3e; /* الأخضر */
+            --brand-blue: #1c8ac9;  /* الأزرق */
+            --bg-color: #f4f7f6;
         }
         
         body {
@@ -18,141 +18,71 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: var(--bg-light);
+            background-color: var(--bg-color);
             color: #333;
             padding: 20px;
             box-sizing: border-box;
-            position: relative;
-            overflow-x: hidden;
         }
 
-        /* --- الأشكال المتحركة في الخلفية --- */
-        .bg-shape {
-            position: absolute;
-            filter: blur(80px);
-            opacity: 0.4;
-            z-index: -1;
-            border-radius: 50%;
-            animation: float 10s infinite alternate ease-in-out;
-        }
-        .shape-1 {
-            width: 300px; height: 300px;
-            background-color: var(--brand-blue);
-            top: -50px; right: -50px;
-            animation-delay: 0s;
-        }
-        .shape-2 {
-            width: 250px; height: 250px;
-            background-color: var(--brand-green);
-            bottom: 10%; left: -50px;
-            animation-delay: -5s;
-        }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(30px, 50px) scale(1.1); }
-        }
-
-        /* --- الحاوية الأساسية (تأثير الزجاج) --- */
         .container {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            padding: 35px 25px;
-            border-radius: 24px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            background: white;
+            padding: 30px 20px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
             max-width: 400px;
             width: 100%;
             text-align: center;
+            border-top: 5px solid var(--brand-green);
+            border-bottom: 5px solid var(--brand-blue);
             margin-top: 2vh;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        /* حركات الدخول */
-        @keyframes fadeUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- النصوص --- */
+        /* تنسيق اسم الشركة بالألوان */
         .brand-name {
-            font-size: 1.7rem;
-            font-weight: 800;
-            margin-bottom: 8px;
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin-bottom: 5px;
             line-height: 1.4;
         }
         .brand-name .green-text { color: var(--brand-green); }
         .brand-name .blue-text { color: var(--brand-blue); }
 
-        .subtitle {
-            color: #555;
-            font-size: 1.05rem;
-            margin-bottom: 30px;
-            font-weight: 500;
-            position: relative;
-            display: inline-block;
-        }
-        
-        /* حركة لكلمة يسعدنا تواصلكم */
-        .subtitle::after {
-            content: '';
-            position: absolute;
-            width: 50%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--brand-blue), transparent);
-            bottom: -8px;
-            left: 25%;
-            border-radius: 2px;
-            animation: lineWidth 2s infinite alternate ease-in-out;
+        p.subtitle {
+            color: #777;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
         }
 
-        @keyframes lineWidth {
-            0% { width: 20%; left: 40%; opacity: 0.5;}
-            100% { width: 80%; left: 10%; opacity: 1;}
-        }
-
-        /* --- زر الرقم الموحد (نبض متوهج) --- */
+        /* زر الرقم الموحد (الأساسي) */
         .btn-main {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            gap: 10px;
             padding: 16px;
-            background: linear-gradient(135deg, var(--brand-green), var(--brand-blue));
+            background: linear-gradient(45deg, var(--brand-green), var(--brand-blue));
             color: white;
             text-decoration: none;
-            border-radius: 14px;
+            border-radius: 12px;
             font-weight: bold;
-            font-size: 1.25rem;
-            box-shadow: 0 8px 20px rgba(28, 138, 201, 0.3);
-            margin-bottom: 35px;
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 1;
-            animation: pulseGlow 2.5s infinite;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(28, 138, 201, 0.3);
+            margin-bottom: 30px;
+            transition: transform 0.2s ease;
         }
+        .btn-main:active { transform: scale(0.98); }
 
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 0 0 0 rgba(28, 138, 201, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(28, 138, 201, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(28, 138, 201, 0); }
-        }
-
-        .btn-main:active { transform: scale(0.96); }
-
-        /* --- قسم المناديب --- */
+        /* قسم المناديب */
         .reps-section {
             text-align: right;
-            border-top: 1px solid rgba(0,0,0,0.05);
-            padding-top: 25px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
         }
 
         .reps-section h3 {
             font-size: 1.1rem;
             color: #444;
-            margin-bottom: 18px;
+            margin-bottom: 15px;
             text-align: center;
         }
 
@@ -162,72 +92,48 @@
             gap: 12px;
         }
 
-        /* أزرار أرقام المناديب مع دخول متدرج */
+        /* أزرار أرقام المناديب */
         .btn-rep {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
-            background: white;
+            padding: 14px 18px;
+            background-color: #f8f9fa;
             color: #333;
             text-decoration: none;
-            border: 1px solid #eef2f5;
-            border-radius: 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
             font-size: 1.1rem;
             font-weight: 600;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            opacity: 0;
-            transform: translateX(-20px);
-            animation: slideIn 0.5s forwards;
+            transition: all 0.2s ease;
         }
         
         .btn-rep:hover, .btn-rep:active {
-            background-color: var(--brand-blue);
-            color: white;
+            background-color: #eaf4fb;
             border-color: var(--brand-blue);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(28, 138, 201, 0.2);
+            color: var(--brand-blue);
         }
 
-        @keyframes slideIn {
-            to { opacity: 1; transform: translateX(0); }
+        .rep-icon {
+            font-size: 1.2rem;
         }
-
-        /* تأخير دخول أزرار المناديب بالترتيب */
-        .btn-rep:nth-child(1) { animation-delay: 0.3s; }
-        .btn-rep:nth-child(2) { animation-delay: 0.4s; }
-        .btn-rep:nth-child(3) { animation-delay: 0.5s; }
-        .btn-rep:nth-child(4) { animation-delay: 0.6s; }
-        .btn-rep:nth-child(5) { animation-delay: 0.7s; }
-        .btn-rep:nth-child(6) { animation-delay: 0.8s; }
-        .btn-rep:nth-child(7) { animation-delay: 0.9s; }
-
-        .rep-icon { font-size: 1.2rem; }
 
         .footer {
-            margin-top: 40px;
+            margin-top: 30px;
             font-size: 0.85rem;
-            color: #888;
+            color: #aaa;
             text-align: center;
-            opacity: 0;
-            animation: fadeUp 1s 1s forwards;
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-shape shape-1"></div>
-    <div class="bg-shape shape-2"></div>
-
     <div class="container">
         <div class="brand-name">
             <span class="green-text">شركة رواسي الامتياز</span> 
-            <br>
             <span class="blue-text">للإستقدام</span>
         </div>
-        
-        <div class="subtitle">يسعدنا تواصلكم لخدمتكم بشكل أفضل</div>
+        <p class="subtitle">يسعدنا تواصلكم لخدمتكم بشكل أفضل</p>
 
         <a href="tel:920008490" class="btn-main">
             <span>الرقم الموحد: 920008490</span>
@@ -278,3 +184,4 @@
     </script>
 
 </body>
+</html>
